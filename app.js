@@ -48,22 +48,38 @@ const getRandomProduct = function() {
         }
         
     }
-    return randomProducts;
+    return randomProducts;  //return randomProducts(so it is available)
 };
 
-getRandomProduct();
+getRandomProduct(); //call getRandomProduct//
 
 const insertPictures = function(){
-    const imageHolder = document.getElementById('pictures');
-    const pictures = getRandomProduct();
-    for(let i = 0; i < pictures.length; i++){
-        let image = document.createElement('img');
-        image.src = pictures[i].file;
-        imageHolder.appendChild(image);
+    const imageHolder = document.getElementById('pictures');  //store reference to id = "pictures" in imageHolder
+    const pictures = getRandomProduct();                      //store result of getRandomProduct() in pictures
+    for(let i = 0; i < pictures.length; i++){               // loop that runs until the end of randomProducts....//
+        let image = document.createElement('img');        //all three times the loop runs we crate an <img>
+        image.src = pictures[i].file;                      // image.src (in html) is held in........
+        imageHolder.appendChild(image);                     //append image to imageHolder (id = pictures)
         
         console.log(image);
     }
 
 }
-
 insertPictures();
+
+const record = document.getElementById("pictures");   //attach event listener to section with id="pictures", contains
+record.addEventListener('click', function() {         //imgs
+    console.log('stuff was clicked', event.target);
+    // erase();
+    getRandomProduct();
+    insertPictures();
+    
+});
+
+// const erase = function(){
+//     const imageHolder = document.getElementById('pictures');
+//     for (let i = 0; i < imageHolder.length; i++) {
+//         imageHolder[i].textContent = '';
+//         c
+//     }
+// };
