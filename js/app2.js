@@ -114,7 +114,53 @@ erase: function() {
                 
             // }
         }
-};
+},
+
+// drawChart: function () {
+//     const chartCanvas = document.getElementById('chart');
+//     const chartCtx = chartCanvas.getContext('2d');
+
+//     const names = [];
+//     const timesClick = [];
+//     for(let i = 0; i<this.list.length; i++){
+//         names.push(this.list[i].name);
+//         timesClick.push(this.list[i].timesClicked)
+//     }
+// console.log('names', names);
+// console.log('timesClick', timesClick);
+
+
+
+
+
+// const chartCanvas = document.getElementById('chart');
+// const chartCtx = chartCanvas.getContext('2d');
+
+
+// const chart = new Chart(chartCtx, {
+//     type: 'bar',
+//     data: {
+//         labels: ['product 1', 'product 2'],
+//         datasets: [{
+//             label: 'number of times picked',
+//             data: [21, 34]
+//         }]
+
+//     },
+//     options: {
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero:true
+//                 }
+//             }]
+//         }
+//     }
+// });
+
+
+// };
+
 
 
 function Product(name, file) {
