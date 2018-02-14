@@ -70,16 +70,18 @@ insertPictures();
 const record = document.getElementById("pictures");   //attach event listener to section with id="pictures", contains
 record.addEventListener('click', function() {         //imgs
     console.log('stuff was clicked', event.target);
-    // erase();
+   
     getRandomProduct();
     insertPictures();
-    
+  
 });
 
 // const erase = function(){
 //     const imageHolder = document.getElementById('pictures');
 //     for (let i = 0; i < imageHolder.length; i++) {
 //         imageHolder[i].textContent = '';
-//         c
+        
 //     }
-// };
+//   erase();
+// console.log(erase);
+
