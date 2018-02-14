@@ -1,8 +1,11 @@
 'use strict'
 const imageHolder = document.getElementById('pictures');
+// const totalClicks = [];
 // console.log('start');
 const game = {
 list: [],
+counter: 0,
+section: document.getElementById('pictures'),
 start: function (){
 
     this.list.push(
@@ -36,33 +39,31 @@ start: function (){
     
     record.addEventListener('click', function() {         //imgs
         console.log('stuff was clicked', event.target);
-        //increase the clicked products .timesClicked property
-        for(let i = 0; i<game.list; i++) {
-
+        for(let i = 0; i<game.list; i++) {               //increase the clicked products .timesClicked property
         }
         const url = event.target.src;
             for(let i = 0; i < game.list.length; i++){
                 const array = game.list[i];
-                 const end = url.slice(url.indexOf(array.file), url.length);
+                const end = url.slice(url.indexOf(array.file), url.length);
 
              if(end === array.file){
                 array.timesClicked++;
                 console.table(array);
+
+                game.counter ++;
+
+              if(game.counter >= 25){
+                 alert('YOU DID IT');
+
+                 
+              };
+
             }
         
         }
-           
-        
         game.erase();
         game.showImages();
     });
-    
-
-
-  
-  
-
-
 },
 getRandomProduct: function () {
     const randomProducts = [];
@@ -75,7 +76,6 @@ getRandomProduct: function () {
         } 
         
     }
-
     return randomProducts;  //return randomProducts(so it is available)
 },
 
@@ -83,14 +83,14 @@ insertPictures: function () {
                                                       //store reference to id = "pictures" in imageHolder
     const allImages = document.querySelector('div.four');
     const pictures = [];                      //store result of getRandomProduct() in pictures
-   while (pictures.length < 3) {
+    while (pictures.length < 3) {
     const randomNumber = Math.floor(Math.random() * game.list.length);
     const block = game.list[randomNumber];
     if (pictures.includes(block))continue;
         pictures.push(block);
    } 
     
-return pictures;
+    return pictures;
 },
 
 showImages: function (){
@@ -113,8 +113,14 @@ erase: function() {
                 imageHolder.textContent = '';
                 
             // }
-        }
-},
+        },
+
+ end: function() {
+     this.record.removeEventListener('click',  )
+
+
+ },       
+
 
 // drawChart: function () {
 //     const chartCanvas = document.getElementById('chart');
@@ -122,24 +128,21 @@ erase: function() {
 
 //     const names = [];
 //     const timesClick = [];
-//     for(let i = 0; i<this.list.length; i++){
+//     for(let i = 0; i<this.list.length; i++) {
 //         names.push(this.list[i].name);
 //         timesClick.push(this.list[i].timesClicked)
 //     }
-// console.log('names', names);
-// console.log('timesClick', timesClick);
+
+//      console.log('names', names);
+//      console.log('timesClick', timesClick);
+
+//      const chartCanvas = document.getElementById('chart');
+//      const chartCtx = chartCanvas.getContext('2d');
 
 
-
-
-
-// const chartCanvas = document.getElementById('chart');
-// const chartCtx = chartCanvas.getContext('2d');
-
-
-// const chart = new Chart(chartCtx, {
-//     type: 'bar',
-//     data: {
+//      const chart = new Chart(chartCtx, {  
+//          type: 'bar',
+//          data: {
 //         labels: ['product 1', 'product 2'],
 //         datasets: [{
 //             label: 'number of times picked',
@@ -159,7 +162,7 @@ erase: function() {
 // });
 
 
-// };
+}
 
 
 
