@@ -1,6 +1,6 @@
 'use strict'
 const imageHolder = document.getElementById('pictures');
-console.log('start');
+// console.log('start');
 const game = {
 list: [],
 start: function (){
@@ -28,14 +28,18 @@ start: function (){
         new Product('wine-glass', 'wine-glass.jpg')
     );
 
-    console.log(this.list);
+    // console.log(this.list);
     this.showImages();
-console.log(this.showImages);
+// console.log(this.showImages);
     
     const record = document.getElementById('pictures');   //attach event listener to section with id="pictures", contains
     
     record.addEventListener('click', function() {         //imgs
         console.log('stuff was clicked', event.target);
+        //increase the clicked products .timesClicked property
+        for(let i = 0; i<game.list; i++) {
+
+        }
         const url = event.target.src;
             for(let i = 0; i < game.list.length; i++){
                 const array = game.list[i];
@@ -43,11 +47,14 @@ console.log(this.showImages);
 
              if(end === array.file){
                 array.timesClicked++;
+                console.table(array);
             }
-            
-            game.erase();
-            game.showImages();
+        
         }
+           
+        
+        game.erase();
+        game.showImages();
     });
     
 
@@ -63,12 +70,12 @@ getRandomProduct: function () {
         const randomNumber = Math.floor(Math.random() * this.list.length); //multiplied by list.length to get random number between 0-20 (we need the index of the product in the array to display a random image)
         const image = this.list[randomNumber];
        randomProducts.push(image);
-        // if (!randomProducts.includes(image)){
-        //     randomProducts.push(image);
-        // }
+        if (!randomProducts.includes(image)){
+            randomProducts.push(image);
+        } 
         
     }
-    
+
     return randomProducts;  //return randomProducts(so it is available)
 },
 
@@ -79,7 +86,7 @@ insertPictures: function () {
    while (pictures.length < 3) {
     const randomNumber = Math.floor(Math.random() * game.list.length);
     const block = game.list[randomNumber];
-    if (pictures.includes(block)) continue;
+    if (pictures.includes(block))continue;
         pictures.push(block);
    } 
     
@@ -90,12 +97,12 @@ showImages: function (){
 
     const images = this.getRandomProduct();
     const show = this.insertPictures();
-    console.log('befor loop');
-    console.log('show length' + show);
+    // console.log('befor loop');
+    // console.log('show length' + show);
     for (let i = 0; i < show.length; i++){
         imageHolder.appendChild(images[i].render());
 
-        console.log('in for loop');
+        // console.log('in for loop');
     }
 
 
@@ -120,7 +127,7 @@ function Product(name, file) {
 Product.prototype.render = function(){
 const ele = document.createElement('img');
 ele.src = `images/${this.file}`;
-console.log("this is ele src", ele.src);
+// console.log("this is ele src", ele.src);
 ele.setAttribute('alt', this.name);
 return ele;
 };
@@ -131,4 +138,4 @@ return ele;
 game.start();
 // game.getRandomProduct();
 // game.insertPictures();
-console.log('anything');
+// console.log('anything');
