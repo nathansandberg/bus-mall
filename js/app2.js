@@ -10,26 +10,26 @@ const game = {
     start: function (){
 
         this.list.push(
-            new Product('bag', 'bag.jpg'),
-            new Product('banana','banana.jpg'),
-            new Product('bathroom', 'bathroom.jpg'),
-            new Product('boots','boots.jpg'),
-            new Product('breakfast', 'breakfast.jpg'),
-            new Product('bubblegum', 'bubblegum.jpg'),
-            new Product('chair', 'chair.jpg'),
-            new Product('cthulhu', 'cthulhu.jpg'),
-            new Product('dog-duck', 'dog-duck.jpg'),
-            new Product('dragon', 'dragon.jpg'),
-            new Product('pen', 'pen.jpg'),
-            new Product('pet-sweep','pet-sweep.jpg'),
-            new Product('scissors', 'scissors.jpg'),
-            new Product('shark', 'shark.jpg'),
-            new Product('sweep', 'sweep.png'),
-            new Product('tauntaun', 'tauntaun.jpg'),
-            new Product('unicorn', 'unicorn.jpg'),
-            new Product('usb', 'usb.gif'),
-            new Product('water-can', 'water-can.jpg'),
-            new Product('wine-glass', 'wine-glass.jpg')
+            new Product('Star Wars Themed Luggage', 'bag.jpg'),
+            new Product('Plastic Banana Slicer','banana.jpg'),
+            new Product('iPod TP Holder', 'bathroom.jpg'),
+            new Product('Impractical Boots','boots.jpg'),
+            new Product('Double Decker Toaster', 'breakfast.jpg'),
+            new Product('Meatball Flavoured Chewing Gum', 'bubblegum.jpg'),
+            new Product('Modern Design Chair', 'chair.jpg'),
+            new Product('Cthulhu Action Figure', 'cthulhu.jpg'),
+            new Product('Animal Abuse', 'dog-duck.jpg'),
+            new Product('Canned Dragon Meat', 'dragon.jpg'),
+            new Product('Writing Implement Cutlery Attachment', 'pen.jpg'),
+            new Product('Ridiculous Pet Attachment','pet-sweep.jpg'),
+            new Product('Pizza Shears', 'scissors.jpg'),
+            new Product('Shark Sleeping Bag', 'shark.jpg'),
+            new Product('Child Abuse', 'sweep.png'),
+            new Product('Tauntaun Sleep Sack', 'tauntaun.jpg'),
+            new Product('Tinned Unicorn Meat', 'unicorn.jpg'),
+            new Product('USB Tentacle', 'usb.gif'),
+            new Product('Self Fulfilling Watering Can', 'water-can.jpg'),
+            new Product('Impractical Wine Glass', 'wine-glass.jpg')
         );
 
 
@@ -52,9 +52,9 @@ const game = {
 
                     game.clickCounter ++;
                     game.erase();
-                    if(game.clickCounter < 5){
+                    if(game.clickCounter < 25){
                         game.showImages();
-                    } else if (game.clickCounter === 5){
+                    } else if (game.clickCounter === 25){
                         game.drawChart();
                         game.makeList();
                     };
@@ -126,7 +126,7 @@ const game = {
             data: {
                 labels: this.names,
                 datasets: [{
-                    label: 'number of times picked',
+                    label: 'Most Popular Products',
                     data: this.timesClick
                 }]
 
@@ -149,7 +149,7 @@ const game = {
 
         for(let i = 0; i < this.names.length; i++) {
             const ele = document.createElement('li');
-            ele.textContent = (this.names[i] + ' was clicked ' + this.timesClick[i] + ' times');
+            ele.textContent = (this.names[i] + ' : ' + this.timesClick[i]);
 
             uList.appendChild(ele);
         }
