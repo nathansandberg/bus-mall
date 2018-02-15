@@ -1,4 +1,57 @@
+*{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* body{
+    border: 2px solid black;
+} */
 img {
     width: 200px;
     height: 200px;
+}
+
+canvas{
+    display: none;
+    background-color: lightblue;
+    /* border: 3px solid black; */
+    
+}
+#ol{
+    background-color:lightcyan;
+    margin: 0px;
+    padding: 10px;
+    /* border: 3px solid black; */
+}
+
+ol{
+    background-color:lightcyan;
+    margin: 0px;
+    padding: 10px;
+    /* border: 3px solid black; */
+}
+h1{
+background-color: lightgoldenrodyellow;
+/* border: 3px solid black; */
+margin: 0px;
+padding: 10px;
+}
+
+h2{
+    margin: 0px;
+    padding: 10px;
+}
+
+ul{
+    background-color: lightgreen;
+    /* border: 3px solid black; */
+    margin: 0px;
+   
+}
+
+#canvas{
+    position: inline;
+    height: 200px;
+    width: 100%;
+
+
 }
