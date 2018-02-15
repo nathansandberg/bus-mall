@@ -2,7 +2,10 @@
 const imageHolder = document.getElementById('pictures');
 const game = {
     list: [],
-    counter: 0,
+    names: [],
+    clickCounter: 0,
+    timesClick: [],
+    timesShown: 0,
     section: document.getElementById('pictures'),
     start: function (){
 
@@ -47,12 +50,13 @@ const game = {
                     array.timesClicked++;
                     console.table(array);
 
-                    game.counter ++;
+                    game.clickCounter ++;
                     game.erase();
-                    if(game.counter < 25){
+                    if(game.clickCounter < 5){
                         game.showImages();
-                    } else if (game.counter === 25){
+                    } else if (game.clickCounter === 5){
                         game.drawChart();
+                        game.makeList();
                     };
                 }
             }
@@ -94,6 +98,7 @@ const game = {
         for (let i = 0; i < show.length; i++){
 
             imageHolder.appendChild(images[i].render());
+
         }
 
 
@@ -106,25 +111,23 @@ const game = {
         const chartCanvas = document.getElementById('chart');
         const chartCtx = chartCanvas.getContext('2d');
 
-        const names = [];
-        const timesClick = [];
+
         for(let i = 0; i < this.list.length; i++) {
             if(this.list[i].timesClicked > 0){
-                names.push(this.list[i].name);
-                timesClick.push(this.list[i].timesClicked);
+                this.names.push(this.list[i].name);
+                this.timesClick.push(this.list[i].timesClicked);
             }
-
         }
-        console.log('names', names);
-        console.log('timesClick', timesClick);
+        // console.log('names', names);
+        console.log('timesClick', this.timesClick);
 
         const chart = new Chart(chartCtx, {  //eslint-disable-line
             type: 'bar',
             data: {
-                labels: names,
+                labels: this.names,
                 datasets: [{
                     label: 'number of times picked',
-                    data: timesClick
+                    data: this.timesClick
                 }]
 
             },
@@ -140,8 +143,22 @@ const game = {
         });
 
 
-    }
+    },
+    makeList: function() {
+        const uList =  document.getElementById('list');
+
+        for(let i = 0; i < this.names.length; i++) {
+            const ele = document.createElement('li');
+            ele.textContent = (this.names[i] + ' was clicked ' + this.timesClick[i] + ' times');
+
+            uList.appendChild(ele);
+        }
+        console.log('names', this.names);
+
+
+    },
 };
+
 function Product(name, file) {
     this.name = name;
     this.file = file;

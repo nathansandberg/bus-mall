@@ -4,5 +4,6 @@ img {
 }
 
 canvas{
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    display: none;
 }
