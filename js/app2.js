@@ -1,5 +1,8 @@
 'use strict';
 const imageHolder = document.getElementById('pictures');
+
+
+
 const game = {
     list: [],
     names: [],
@@ -38,7 +41,7 @@ const game = {
         const record = document.getElementById('pictures');   //attach event listener to section with id="pictures", contains
 
         record.addEventListener('click', function() {         //imgs
-            console.log('stuff was clicked', event.target);
+            // console.log('stuff was clicked', event.target);
             for(let i = 0; i < game.list; i++) {               //increase the clicked products .timesClicked property
             }
             const url = event.target.src;
@@ -48,7 +51,7 @@ const game = {
 
                 if(end === array.file){
                     array.timesClicked++;
-                    console.table(array);
+                    // console.table(array);
 
                     game.clickCounter ++;
                     game.erase();
@@ -61,6 +64,8 @@ const game = {
                 }
             }
         });
+
+
     },
     getRandomProduct: function () {
         const randomProducts = [];
@@ -172,4 +177,13 @@ Product.prototype.render = function(){
     ele.setAttribute('alt', this.name);
     return ele;
 };
+
+localStorage.setItem('Tally', JSON.stringify(game.list));
+JSON.parse(localStorage.getItem('Tally'));
+
+if(localStorage.getItem('Tally')){
+    localStorage.setItem('Tally', JSON.stringify(game.list));
+} else {
+    localStorage.getItem('Tally', JSON.stringify(game.list));
+}
 game.start();

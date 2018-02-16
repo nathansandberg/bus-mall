@@ -6,14 +6,28 @@
     border: 2px solid black;
 } */
 img {
-    width: 200px;
-    height: 200px;
+    width: 33%;
+    height: 400px;
+}
+
+#chart{
+    /* display: block; */
+    width: 500px;
+    /* margin-right: auto;
+    margin-left: auto; */
+}
+#canvas{
+    position: block;
+    width: 800px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 canvas{
     display: none;
     background-color: lightblue;
     /* border: 3px solid black; */
+    width: 500px;
     
 }
 #ol{
@@ -48,10 +62,12 @@ ul{
    
 }
 
-#canvas{
-    position: inline;
-    height: 200px;
-    width: 100%;
+/* #pictures {
+    display: block;
+    width: 50%;
+
+} */
 
 
-}
+
+
