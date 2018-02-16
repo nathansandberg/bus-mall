@@ -62,6 +62,12 @@ ul{
    
 }
 
+button{
+    display: inline;
+    position: relative;
+    margin-top: 100px;
+}
+
 /* #pictures {
     display: block;
     width: 50%;
