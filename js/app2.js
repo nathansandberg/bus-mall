@@ -11,6 +11,15 @@ const game = {
     timesShown: 0,
     section: document.getElementById('pictures'),
     start: function (){
+        //get the settings if there are any
+        if(localStorage.getItem('settings')){
+            const savedSettings = JSON.parse(localStorage.getItem('settings'));
+            console.log('this is savedSettings', savedSettings);
+
+            this.numProducts = parseInt(savedSettings.numProducts);
+            this.numChoices = parseInt(savedSettings.numChoices);
+            console.log('this is', this);
+        }
 
         this.list.push(
             new Product('Star Wars Themed Luggage', 'bag.jpg'),
@@ -55,9 +64,9 @@ const game = {
 
                     game.clickCounter ++;
                     game.erase();
-                    if(game.clickCounter < 25){
+                    if(game.clickCounter < game.numChoices){
                         game.showImages();
-                    } else if (game.clickCounter === 25){
+                    } else if (game.clickCounter === game.numChoices){
                         game.drawChart();
                         game.makeList();
                     };
@@ -69,7 +78,7 @@ const game = {
     },
     getRandomProduct: function () {
         const randomProducts = [];
-        while (randomProducts.length < 3) {
+        while (randomProducts.length < this.numProducts) {
             const randomNumber = Math.floor(Math.random() * this.list.length); //multiplied by list.length to get random number between 0-20 (we need the index of the product in the array to display a random image)
             const image = this.list[randomNumber];
 
@@ -85,7 +94,7 @@ const game = {
 
     insertPictures: function () {
         const pictures = [];
-        while (pictures.length < 3) {
+        while (pictures.length < this.numProducts) {
             const randomNumber = Math.floor(Math.random() * game.list.length);
             const block = game.list[randomNumber];
             if (pictures.includes(block))continue;

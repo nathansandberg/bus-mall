@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link href="style2.css" rel="stylesheet" >
+    <!-- <link href="style2.css" rel="stylesheet" > -->
 </head>
  
 
@@ -13,21 +13,12 @@
     <section>
         <legend>This Describes the Fieldset</legend>
         <fieldset>
-            <form>
-                <input type="text" id="form" name="title" value="Who?" min="1" max="5">
-            </form>
-            <br>
-            <form>
-                <input type="text" id="form" name="title" value="What?" min="1" max="5">
-            </form>
-            <br>
-            <form>
-                <input type="text" id="form" name="title" value="Why?" min"1" max="5">
-            </form>
+            <form id="inputs">
+                <input type="text" id="form" name="numProducts" min="3" max="5" placeholder="number of products to show?">
+                <input type="text" id="form2" name="numChoices" min="3" max="25" placeholder="number of rounds?">
 
             <button type="submit">Update Game</button>
-
-
+            </form>
         </fieldset>
 
 
@@ -49,7 +40,7 @@
 
 
 
-<script src="js/app2.js"></script>
+<script src="js/settings.js"></script>
 <script src="js/Chart.js"></script>
 </body>
 
