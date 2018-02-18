@@ -136,7 +136,7 @@ const game = {
         console.log('timesClick', this.timesClick);
 
         const chart = new Chart(chartCtx, {  //eslint-disable-line
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                 labels: this.names,
                 datasets: [{

@@ -1,6 +1,5 @@
 *{
     font-family: 'Raleway', sans-serif;
-    /* background-color: lightslategray; */
 }
 
 
@@ -23,7 +22,6 @@ canvas{
     margin-left: auto;
 }
 nav{
-    /* display: inline; */
     position: relative;
     left: 1200px;
 }
@@ -41,7 +39,6 @@ nav{
 
 
 #ol{
-    /* background-color:lightcyan; */
     display: block;
     position: relative;
     width: 600px;
@@ -51,7 +48,6 @@ nav{
 }
 
 ol{
-    /* background-color:lightcyan; */
     margin: 0px;
     padding: 10px;
     
@@ -82,8 +78,35 @@ button{
 a{
     text-decoration: none;
     color: black;
+    background-color: none;
 }
 
+button:hover{
+    background-color: yellow;
+}
 
+#begin{
+    font-size:20px;
+    color: gray;
+    height:40px;
+    width: 70px;
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    border-radius: 10px;
+    background-color: none;
+    
+}
+
+#begin:hover{
+    background-color: yellow;
+}
+
+.grow:hover{
+   -webkit-transform: scale(1.1);
+   -ms-transform: scale(1.1);
+   transform: scale(1.1);
+
+}
 
 
