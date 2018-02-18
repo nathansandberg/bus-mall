@@ -1,0 +1,43 @@
+*{
+    font-family: 'Raleway', sans-serif;
+
+}
+
+input{
+    display: block;
+    margin: 20px;
+    width: 200px;
+}
+
+fieldset{
+    width: 50%;
+    padding: 20px;
+}
+a{
+    color: red;
+    text-decoration: none;
+}
+
+#content{
+    display: block;
+    width: 50%;
+    margin: 0px auto;
+}
+div{
+    position: relative;
+   left: 150px;
+   top: 150px;
+}
+
+h1{
+    padding: 10px;
+    margin: 2px;
+}
+
+legend{
+    padding: 10px;
+}
+
+ button{
+     margin: 10px;
+ }
