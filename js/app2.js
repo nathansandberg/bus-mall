@@ -1,5 +1,8 @@
 'use strict';
 const imageHolder = document.getElementById('pictures');
+
+
+
 const game = {
     list: [],
     names: [],
@@ -8,6 +11,15 @@ const game = {
     timesShown: 0,
     section: document.getElementById('pictures'),
     start: function (){
+        //get the settings if there are any
+        if(localStorage.getItem('settings')){
+            const savedSettings = JSON.parse(localStorage.getItem('settings'));
+            console.log('this is savedSettings', savedSettings);
+
+            this.numProducts = parseInt(savedSettings.numProducts);
+            this.numChoices = parseInt(savedSettings.numChoices);
+            console.log('this is', this);
+        }
 
         this.list.push(
             new Product('Star Wars Themed Luggage', 'bag.jpg'),
@@ -38,7 +50,7 @@ const game = {
         const record = document.getElementById('pictures');   //attach event listener to section with id="pictures", contains
 
         record.addEventListener('click', function() {         //imgs
-            console.log('stuff was clicked', event.target);
+            // console.log('stuff was clicked', event.target);
             for(let i = 0; i < game.list; i++) {               //increase the clicked products .timesClicked property
             }
             const url = event.target.src;
@@ -48,23 +60,25 @@ const game = {
 
                 if(end === array.file){
                     array.timesClicked++;
-                    console.table(array);
+                    // console.table(array);
 
                     game.clickCounter ++;
                     game.erase();
-                    if(game.clickCounter < 25){
+                    if(game.clickCounter < game.numChoices){
                         game.showImages();
-                    } else if (game.clickCounter === 25){
+                    } else if (game.clickCounter === game.numChoices){
                         game.drawChart();
                         game.makeList();
                     };
                 }
             }
         });
+
+
     },
     getRandomProduct: function () {
         const randomProducts = [];
-        while (randomProducts.length < 3) {
+        while (randomProducts.length < this.numProducts) {
             const randomNumber = Math.floor(Math.random() * this.list.length); //multiplied by list.length to get random number between 0-20 (we need the index of the product in the array to display a random image)
             const image = this.list[randomNumber];
 
@@ -80,7 +94,7 @@ const game = {
 
     insertPictures: function () {
         const pictures = [];
-        while (pictures.length < 3) {
+        while (pictures.length < this.numProducts) {
             const randomNumber = Math.floor(Math.random() * game.list.length);
             const block = game.list[randomNumber];
             if (pictures.includes(block))continue;
@@ -122,7 +136,7 @@ const game = {
         console.log('timesClick', this.timesClick);
 
         const chart = new Chart(chartCtx, {  //eslint-disable-line
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                 labels: this.names,
                 datasets: [{
@@ -172,4 +186,13 @@ Product.prototype.render = function(){
     ele.setAttribute('alt', this.name);
     return ele;
 };
+
+localStorage.setItem('Tally', JSON.stringify(game.list));
+JSON.parse(localStorage.getItem('Tally'));
+
+if(localStorage.getItem('Tally')){
+    localStorage.setItem('Tally', JSON.stringify(game.list));
+} else {
+    localStorage.getItem('Tally', JSON.stringify(game.list));
+}
 game.start();
